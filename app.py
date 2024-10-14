@@ -16,6 +16,10 @@ def prettify_xml(xml_string):
 def prettify_json(json_data):
     return json.dumps(json_data, indent=4, ensure_ascii=False)
 
+@app.route('/')
+def hello_world():
+    return 'Hello from Koyeb'
+
 @app.route('/convert/xml-to-json', methods=['POST'])
 def convert_xml_to_json():
     xml_data = request.data.decode('utf-8')  # Obtener XML del body de la petición
@@ -37,4 +41,4 @@ def convert_json_to_xml():
         return jsonify({'error': str(e)}), 400  # Manejo de errores
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
